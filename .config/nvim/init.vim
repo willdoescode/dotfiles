@@ -14,6 +14,12 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+" Allows undo even after saving and closing a file
+if has('persistent_undo')
+  set undofile
+  set undodir=$HOME/.config/nvim/undo
+  endif
+
 set number relativenumber
 set mouse=a
 set tabstop=2
@@ -37,10 +43,10 @@ nnoremap <Up> :resize +2<CR>
 nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>sc :noh <CR>
 nnoremap S :%s//gI<Left><Left><Left>
 nnoremap \<Tab> :e# <CR>
@@ -50,8 +56,8 @@ xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
 nmap <F8> :TagbarToggle<CR>
-vmap <Leader>w <plug>NERDCommenterToggle
 nmap <Leader>w <plug>NERDCommenterToggle
+vmap <Leader>w <plug>NERDCommenterToggle
 
 inoremap " ""<left>
 inoremap ' ''<left>
