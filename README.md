@@ -1,1 +1,3 @@
 # dotfiles
+
+![setup](ss.png)

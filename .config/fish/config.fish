@@ -40,15 +40,17 @@ set -U __done_min_cmd_duration 5000  # default: 5000 ms
     #printf '%s@%s%s%s%s> ' (whoami) (hostname | cut -d . -f 1) \
                     #(set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 #end
+#
+#Vim reminder
+#:vsp vertical split
+#:sp horizontalky split
 
-
-alias :o='vim'
+alias :o='nvim'
 alias git='hub'
 alias :e='vim'
 alias b='brew'
 alias c='cargo'
 alias ping='gping'
-alias screenfetch='screenfetch -E'
 alias :q='exit'
 alias ..="cd .."
 alias ...="cd ../.."
@@ -60,8 +62,14 @@ alias cat='bat'
 alias nat='natls --gdf -ln'
 alias ls='nat'
 alias l='ls -h'
+alias wclock='watch -n1 "date '+%D%n%T'|figlet -k"'
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+alias rm='trash'
 
 set -x PATH $HOME/bin /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin $HOME/.cargo/bin $HOME/.projects/bin
+source $HOME/.cargo/env
 thefuck --alias | source
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 starship init fish | source

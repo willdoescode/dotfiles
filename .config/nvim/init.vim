@@ -12,7 +12,16 @@ Plug 'luochen1990/rainbow'
 Plug 'preservim/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'cespare/vim-toml'
+Plug 'joshdick/onedark.vim'
+Plug 'dag/vim-fish'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
 call plug#end()
+
+let g:onedark_terminal_italics = 1
+let g:onedark_termcolors = 256
+colorscheme onedark
 
 " Allows undo even after saving and closing a file
 if has('persistent_undo')
@@ -32,6 +41,8 @@ let g:go_fmt_autosave = 1
 let g:dracula_colorterm = 0
 let g:rainbow_active = 1
 let NERDTreeMinimalUI=1
+let g:NERDTreeHijackNetrw = 1
+let g:lightline = { 'colorscheme': 'onedark' }
 
 augroup numbertoggle
   autocmd!
@@ -49,14 +60,17 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>sc :noh <CR>
 nnoremap S :%s//gI<Left><Left><Left>
-nnoremap \<Tab> :e# <CR>
-nnoremap <Leader>s :Files <CR>
+nnoremap \<Tab> :e#<CR>
+nnoremap <Leader><Leader>f :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
 
+" Select text and hold J or K to move it all up or down in a block
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
 nmap <F8> :TagbarToggle<CR>
 nmap <Leader>w <plug>NERDCommenterToggle
+
 vmap <Leader>w <plug>NERDCommenterToggle
 
 inoremap " ""<left>
@@ -69,7 +83,20 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 imap jj <Esc>
 
-colorscheme dracula
+if has('nvim')
+  fu! OpenTerminal()
+   topleft split
+   resize 30
+   :terminal
+  endf
+else
+  fu! OpenTerminal()
+   topleft split
+   resize 30
+:call term_start('fish', {'curwin' : 1, 'term_finish' : 'close'})
+  endf
+endif
+nnoremap <Leader>t :call OpenTerminal()<CR>
 
 hi Normal guibg=NONE ctermbg=NONE
 function! NERDTreeToggleInCurDir()
@@ -88,8 +115,7 @@ map <Leader>f :call NERDTreeToggleInCurDir()<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-autocmd VimEnter * :call NERDTreeToggleInCurDir()
-autocmd VimEnter * wincmd p
+autocmd VimLeavePre * set cul
 
 filetype plugin indent on
 

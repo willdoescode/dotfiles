@@ -1,5 +1,3 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -19,8 +17,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   #dimensions:
-  #  columns: 0
-  #  lines: 0
+    #columns: 400
+    #lines: 400
 
   # Window position (changes require restart)
   #
@@ -122,7 +120,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Roboplex Nerd Font 
+    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -130,7 +128,7 @@ font:
   # Bold font face
   bold:
     # Font family
-    #
+   #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     # family: SauceCodePro Nerd Font
@@ -141,7 +139,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Roboplex Nerd Font 
+    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -160,7 +158,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Roboplex Nerd Font 
+    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -179,7 +177,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Roboplex Nerd Font 
+    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -291,58 +289,90 @@ font:
     #cyan: '#6d96a5'
     #white: '#aeb3bb'
 
-    colors:
+# ...
+
+
+# Colors (One Dark)
+colors:
   # Default colors
   primary:
-    background: '0x282c34'
-    foreground: '0xbbc2cf'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  selection:
-    text: '0xbbc2cf'
-    background: '0x282c34'
+    background: '0x1e2127'
+    foreground: '0xabb2bf'
 
   # Normal colors
   normal:
-    black:   '0x1c1f24'
-    red:     '0xff6c6b'
-    green:   '0x98be65'
-    yellow:  '0xda8548'
-    blue:    '0x51afef'
+    black:   '0x1e2127'
+    red:     '0xe06c75'
+    green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
     magenta: '0xc678dd'
-    cyan:    '0x5699af'
-    white:   '0x202328'
+    cyan:    '0x56b6c2'
+    white:   '0xabb2bf'
 
   # Bright colors
   bright:
-    black:   '0x5b6268'
-    red:     '0xda8548'
-    green:   '0x4db5bd'
-    yellow:  '0xecbe7b'
-    blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
-    magenta: '0xa9a1e1'
-    cyan:    '0x46d9ff'
-    white:   '0xdfdfdf'
+    black:   '0x5c6370'
+    red:     '0xe06c75'
+    green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0xffffff'
+
+    #colors:
+  ## Default colors
+  #primary:
+    #background: '0x282c34'
+    #foreground: '0xbbc2cf'
+
+    ## Bright and dim foreground colors
+    ##
+    ## The dimmed foreground color is calculated automatically if it is not present.
+    ## If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    ## is `false`, the normal foreground color will be used.
+    ##dim_foreground: '0x9a9a9a'
+    ##bright_foreground: '0xffffff'
+
+  ## Cursor colors
+  ##
+  ## Colors which should be used to draw the terminal cursor. If these are unset,
+  ## the cursor color will be the inverse of the cell color.
+  ##cursor:
+  ##  text: '0x000000'
+  ##  cursor: '0xffffff'
+
+  ## Selection colors
+  ##
+  ## Colors which should be used to draw the selection area. If selection
+  ## background is unset, selection color will be the inverse of the cell colors.
+  ## If only text is unset the cell text color will remain the same.
+  #selection:
+    #text: '0xbbc2cf'
+    #background: '0x282c34'
+
+  ## Normal colors
+  #normal:
+    #black:   '0x1c1f24'
+    #red:     '0xff6c6b'
+    #green:   '0x98be65'
+    #yellow:  '0xda8548'
+    #blue:    '0x51afef'
+    #magenta: '0xc678dd'
+    #cyan:    '0x5699af'
+    #white:   '0x202328'
+
+  ## Bright colors
+  #bright:
+    #black:   '0x5b6268'
+    #red:     '0xda8548'
+    #green:   '0x4db5bd'
+    #yellow:  '0xecbe7b'
+    #blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
+    #magenta: '0xa9a1e1'
+    #cyan:    '0x46d9ff'
+    #white:   '0xdfdfdf'
 
 #colors:
   ## Default colors
@@ -884,26 +914,6 @@ background_opacity: 0.95
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-key_bindings:
-    # (Windows, Linux, and BSD only)
-  - { key: V,        mods: Control|Shift, action: Paste            }
-  - { key: C,        mods: Control|Shift, action: Copy             }
-  - { key: Insert,   mods: Shift,         action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
-  - { key: Paste,                    action: Paste                            }
-  - { key: Copy,                     action: Copy                             }
-  - { key: L,         mods: Control, action: ClearLogNotice                   }
-  - { key: L,         mods: Control, chars: "\x0c"                            }
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
-
 
 
 cursor:
