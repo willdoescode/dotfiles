@@ -11,7 +11,7 @@ env:
   TERM: xterm-256color
 
 window:
-  decorations: "none"
+  decorations: buttonless
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -34,7 +34,8 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 15
-    y: 15
+    y: 5
+  dynamic_padding: true
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -112,7 +113,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: SauceCodePro Nerd Font
+    family: SauceCodePro Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
@@ -120,7 +121,6 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -131,7 +131,7 @@ font:
    #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro Nerd Font
+    family: SauceCodePro Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
@@ -139,7 +139,6 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -150,7 +149,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
@@ -158,7 +157,6 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -169,7 +167,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
@@ -177,7 +175,6 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Hack Nerd Font 
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
