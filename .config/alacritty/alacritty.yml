@@ -68,11 +68,7 @@ window:
 
 
   # Window class (Linux/BSD only):
-  class:
-    # Application instance name
-    instance: Alacritty
     # General application class
-    general: Alacritty
 
   # GTK theme variant (Linux/BSD only)
   #
@@ -101,7 +97,6 @@ scrolling:
 # change the `it` value in terminfo when altering this setting.
 #tabspaces: 8
 
-use_thin_strokes: false
 
 # Font configuration
 font:
@@ -118,7 +113,7 @@ font:
     # family: RobotoMono Nerd Font
     # family: Hack
     # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
+    #family: Fira Code
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
 
@@ -136,7 +131,8 @@ font:
     # family: RobotoMono Nerd Font
     # family: Hack
     # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
+    #family: UbuntuMono Nerd Font Mono
+    #family: Fira Code
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
 
@@ -149,12 +145,13 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font Mono
+    family: SauceCodePro Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
     # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
+    #family: UbuntuMono Nerd Font Mono
+    #family: Fira Code
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
 
@@ -172,7 +169,8 @@ font:
     # family: RobotoMono Nerd Font
     # family: Hack
     # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
+    #family: UbuntuMono Nerd Font Mono
+    #family: Fira Code
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
 

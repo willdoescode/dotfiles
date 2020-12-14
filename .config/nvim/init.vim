@@ -1,49 +1,33 @@
 call plug#begin()
-" Vim auto completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" FileTree
 Plug 'preservim/nerdtree'
-" Better commenting
 Plug 'preservim/nerdcommenter'
-" Go syntax highlighting and in vim run options
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" A floating terminal
 Plug 'voldikss/vim-floaterm'
-" Preview markdown files in a browser
 Plug 'shime/vim-livedown'
-" Color bracket pairs
 Plug 'luochen1990/rainbow'
-" Show the structure of the file
 Plug 'preservim/tagbar'
-" The fastest fuzzy search in the west
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Toml highlighting support
 Plug 'cespare/vim-toml'
-" My favorite vim theme
 Plug 'joshdick/onedark.vim'
-" Fish support for vim
 Plug 'dag/vim-fish'
-" Show the git changes next to the line number
 Plug 'airblade/vim-gitgutter'
-" A better bottom status bar 
 Plug 'itchyny/lightline.vim'
-" Auto close brackets
 Plug 'Raimondi/delimitMate'
-" Focus on some code
 Plug 'junegunn/limelight.vim'
-" Easily swap between windows 
 Plug 'wesQ3/vim-windowswap'
-" A nice looking start screen
 Plug 'mhinz/vim-startify'
-" Focus more on code 
 Plug 'junegunn/goyo.vim'
-" Vim rust support
-Plug 'rust-lang/rust.vim'
-" Best not taking plugin
 Plug 'vimwiki/vimwiki'
-" Html completion
 Plug 'mattn/emmet-vim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'lervag/vimtex'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'pechorin/any-jump.vim'
 call plug#end()
 
 let g:onedark_terminal_italics = 1
@@ -52,8 +36,8 @@ colorscheme onedark
 
 " Allows undo even after saving and closing a fife
 if has('persistent_undo')
-    set undofile
-    set undodir=$HOME/.config/nvim/undo
+	set undofile
+	set undodir=$HOME/.config/nvim/undo
 endif
 
 set number relativenumber
@@ -67,29 +51,45 @@ set nocompatible
 " will suddenly start to care about the case
 set ignorecase
 set smartcase
+set guifont=Fira\ Code:h13
 
+" Leader key is now mapped to space
 let mapleader = "\<Space>"
 let g:go_fmt_autosave = 1
 let g:rainbow_active = 1
 let NERDTreeMinimalUI=1
 let NERDTreeShowLineNumbers=0
 let g:NERDTreeShowHidden=1
-let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeHijackNetrw = 0
 let g:windowswap_map_keys = 0
 let g:limelight_conceal_ctermfg = 'gray'
 let g:lightline = { 'colorscheme': 'onedark' }
+let g:airline_theme='onedark'
 let g:rustfmt_autosave = 0
 let g:rust_clip_command = 'pbcopy'
 let g:rust_recommended_style = 0
 let delimitMate_expand_cr = 1
 let g:user_emmet_install_global = 0
 let g:go_fmt_command = "goimports"
+let g:any_jump_search_prefered_engine = 'rg'
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Switches line nums to regular in insert mode
 augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 nnoremap <silent> <Up> :resize +2<CR>
@@ -114,6 +114,7 @@ nnoremap <silent> <leader>pi :w<CR> :source %<CR> :PlugInstall<CR>
 nnoremap <silent> <leader>pc :w<CR> :source %<CR> :PlugClean<CR>
 nnoremap <silent> <leader>l :Limelight!!<CR>
 nnoremap <silent> <leader>e :normal <C-y>, <CR><Left>i
+nnoremap <silent> <Leader>t :call OpenTerminal()<CR>
 " Only use in init.vim file so you don't have to restart vim to see changes
 nnoremap <silent> <leader>sr :w<CR> :source %<CR>
 
@@ -126,41 +127,39 @@ nmap <Leader>w <plug>NERDCommenterToggle
 nmap <silent> <leader>cr :let @+ = expand("%")<cr>
 nmap <silent> <leader>cf :let @+ = expand("%:p")<cr>
 map <Leader>; <plug>NERDCommenterToggle
+map <silent> <Leader>f :call NERDTreeToggleInCurDir()<CR>
 imap jj <Esc>
 
 if has('nvim')
-    fu! OpenTerminal()
-        topleft split
-        resize 30
-        terminal
-    endf
+	fu! OpenTerminal()
+		topleft split
+		resize 30
+		terminal
+	endf
 else
-    fu! OpenTerminal()
-        topleft split
-        resize 30
-        call term_start('fish', {'curwin' : 1, 'term_finish' : 'close'})
-    endf
+	fu! OpenTerminal()
+		topleft split
+		resize 30
+		call term_start('fish', {'curwin' : 1, 'term_finish' : 'close'})
+	endf
 endif
-nnoremap <silent> <Leader>t :call OpenTerminal()<CR>
 
 function! NERDTreeToggleInCurDir()
-    if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-        exe ":NERDTreeClose"
-    else
-        if (expand("%:t") != '')
-            exe ":NERDTreeFind"
-        else
-            exe ":NERDTreeToggle"
-        endif
-    endif
+	if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+		exe ":NERDTreeClose"
+	else
+		if (expand("%:t") != '')
+			exe ":NERDTreeFind"
+		else
+			exe ":NERDTreeToggle"
+		endif
+	endif
 endfunction
 
-map <silent> <Leader>f :call NERDTreeToggleInCurDir()<CR>
-
 function ExitGoyo()
-    Limelight!
-    " Makes terminal background clear again
-    hi Normal guibg=NONE ctermbg=NONE
+	Limelight!
+	" Makes terminal background clear again
+	hi Normal guibg=NONE ctermbg=NONE
 endfunction
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -169,6 +168,10 @@ autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 autocmd User GoyoLeave call ExitGoyo()
 autocmd FileType html,css EmmetInstall
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd Filetype tex setl updatetime=1
+autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
+
 " Set cursor back to line on vim exit
 au VimLeave * set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20
 
@@ -179,48 +182,7 @@ syntax on
 " Generate new tagbar types with :TagBarGetTypeConfig <lang> 
 " Open tagbar with F8
 
-let g:tagbar_type_rust = {
-            \ 'kinds' : [
-            \ 'n:module:1:0',
-            \ 's:struct',
-            \ 'i:trait',
-            \ 'c:implementation:0:0',
-            \ 'f:function',
-            \ 'g:enum',
-            \ 't:type alias',
-            \ 'v:global variable',
-            \ 'M:macro',
-            \ 'm:struct field',
-            \ 'e:enum variant',
-            \ 'P:method',
-            \ '?:unknown',
-            \ ],
-            \ }
-
-let g:tagbar_type_go = {
-            \ 'kinds' : [
-            \ 'p:packages:0:0',
-            \ 'i:interfaces:0:0',
-            \ 'c:constants:0:0',
-            \ 's:structs',
-            \ 'm:struct members:0:0',
-            \ 't:types',
-            \ 'f:functions',
-            \ 'v:variables:0:0',
-            \ '?:unknown',
-            \ ],
-            \ }
-
-let g:tagbar_type_python = {
-            \ 'kinds' : [
-            \ 'i:modules:1:0',
-            \ 'c:classes',
-            \ 'f:functions',
-            \ 'm:members',
-            \ 'v:variables:0:0',
-            \ '?:unknown',
-            \ ],
-            \ }
+source ~/.config/nvim/tagbar.vim
 
 " Set vim to transparent before starting so no settings can change it
 hi Normal guibg=NONE ctermbg=NONE
