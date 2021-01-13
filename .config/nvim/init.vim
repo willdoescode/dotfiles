@@ -19,7 +19,9 @@ Plug 'junegunn/limelight.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'vimwiki/vimwiki'
+Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
@@ -28,6 +30,12 @@ Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'pechorin/any-jump.vim'
+Plug 'itchyny/calendar.vim'
+Plug 'toyamarinyon/vim-swift'
+Plug 'ocaml/vim-ocaml'
+Plug 'sonph/onehalf'
+Plug 'jacoborus/tender.vim'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 let g:onedark_terminal_italics = 1
@@ -115,8 +123,10 @@ nnoremap <silent> <leader>pc :w<CR> :source %<CR> :PlugClean<CR>
 nnoremap <silent> <leader>l :Limelight!!<CR>
 nnoremap <silent> <leader>e :normal <C-y>, <CR><Left>i
 nnoremap <silent> <Leader>t :call OpenTerminal()<CR>
+nnoremap <F1> <Esc>g<C-G>
 " Only use in init.vim file so you don't have to restart vim to see changes
 nnoremap <silent> <leader>sr :w<CR> :source %<CR>
+nnoremap <leader>f <cmd>CHADopen<cr>
 
 " Sefect text and hold J or K to move it all up or down in a block
 xnoremap K :move '<-2<CR>gv-gv
@@ -127,8 +137,10 @@ nmap <Leader>w <plug>NERDCommenterToggle
 nmap <silent> <leader>cr :let @+ = expand("%")<cr>
 nmap <silent> <leader>cf :let @+ = expand("%:p")<cr>
 map <Leader>; <plug>NERDCommenterToggle
-map <silent> <Leader>f :call NERDTreeToggleInCurDir()<CR>
+map <silent> <Leader>nf :call NERDTreeToggleInCurDir()<CR>
 imap jj <Esc>
+
+lua vim.api.nvim_set_var("chadtree_settings", { use_icons = "emoji" })
 
 if has('nvim')
 	fu! OpenTerminal()
@@ -182,7 +194,7 @@ syntax on
 " Generate new tagbar types with :TagBarGetTypeConfig <lang> 
 " Open tagbar with F8
 
-source ~/.config/nvim/tagbar.vim
+source $HOME/.config/nvim/tagbar.vim
 
 " Set vim to transparent before starting so no settings can change it
 hi Normal guibg=NONE ctermbg=NONE
