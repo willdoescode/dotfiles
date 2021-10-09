@@ -4,3 +4,5 @@
 
 ![demo](assets/demo.png)
 ![c-demo](assets/c-demo.png)
+![fish-demo](assets/fish-demo.png)
+![nvim-demo](assets/nvim-demo.png)
