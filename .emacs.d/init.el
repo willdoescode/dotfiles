@@ -5,6 +5,21 @@
    (newline-mark 10 [10]) ; 10 line feed
    (tab-mark 9 [9655 9] [92 9]))) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("03e26cd42c3225e6376d7808c946f7bed6382d795618a82c8f3838cd2097a9cc" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" default))
+ '(global-command-log-mode t)
+ '(markdown-command "/usr/local/bin/pandoc")
+ '(package-selected-packages
+   '(racket-mode cmake-mode zig-mode magit cider auctex company lsp-haskell python-mode rust-mode lsp-ivy dap-mode flycheck lsp-ui lsp-mode haskell-mode evil helpful smex gruber-darker-theme counsel ivy-rich which-key rainbow-delimiters doom-modeline gruvbox-theme ivy command-log-mode use-package))
+ '(send-mail-function 'smtpmail-send-it)
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
+
 (scroll-bar-mode -1)			; Disable scrollbar
 (tool-bar-mode  -1)			; Disable toolbar
 (tooltip-mode -1)			; Disable tooltips
@@ -51,19 +66,7 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("03e26cd42c3225e6376d7808c946f7bed6382d795618a82c8f3838cd2097a9cc" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" default))
- '(global-command-log-mode t)
- '(package-selected-packages
-   '(magit cider auctex company lsp-haskell python-mode rust-mode lsp-ivy dap-mode flycheck lsp-ui lsp-mode haskell-mode evil helpful smex gruber-darker-theme counsel ivy-rich which-key rainbow-delimiters doom-modeline gruvbox-theme ivy command-log-mode use-package))
- '(send-mail-function 'smtpmail-send-it)
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 25))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -184,7 +187,9 @@
 	 (haskell-mode . lsp)
 	 (c-mode . lsp)
 	 (c++-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+	 (zig-mode . lsp)
+	 (racket-mode . lsp)
+	 (cmake-mode . lsp))
   :commands lsp)
 
 ;; LSP 
@@ -211,3 +216,5 @@
   (eshell/addpath "/usr/local/bin"))
 (add-hook 'eshell-mode-hook #'jpk/eshell-mode-hook)
 
+;; SHIFT + Arrow keys to move between splits
+(windmove-default-keybindings)
