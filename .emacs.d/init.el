@@ -33,6 +33,7 @@
 (global-set-key (kbd "<escape>")
 		'keyboard-escape-quit)	; Use ESC to quit
 
+(setq ring-bell-function 'ignore)
 (setq frame-resize-pixelwise t)
 (toggle-frame-maximized)
 
@@ -222,3 +223,6 @@
 
 ;; SHIFT + Arrow keys to move between splits
 (windmove-default-keybindings)
+
+;; Make C-x b and C-x C-b switch buffers
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
