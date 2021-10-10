@@ -33,6 +33,9 @@
 (global-set-key (kbd "<escape>")
 		'keyboard-escape-quit)	; Use ESC to quit
 
+(setq frame-resize-pixelwise t)
+(toggle-frame-maximized)
+
 (require 'package)			; Init package
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -56,8 +59,9 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(column-number-mode)			; Show line number column
-(global-display-line-numbers-mode t)	; Line numbers everywhere
+;; Relative line numbers ftw
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
 
 ;; Turn off line numbers for terminals and org mode
 (dolist (mode '(org-mode-hook
