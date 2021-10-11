@@ -15,7 +15,7 @@
  '(global-command-log-mode t)
  '(markdown-command "/usr/local/bin/pandoc")
  '(package-selected-packages
-   '(racket-mode cmake-mode zig-mode magit cider auctex company lsp-haskell python-mode rust-mode lsp-ivy dap-mode flycheck lsp-ui lsp-mode haskell-mode evil helpful smex gruber-darker-theme counsel ivy-rich which-key rainbow-delimiters doom-modeline gruvbox-theme ivy command-log-mode use-package))
+   '(agda2-mode go-mode racket-mode cmake-mode zig-mode magit cider auctex company lsp-haskell python-mode rust-mode lsp-ivy dap-mode flycheck lsp-ui lsp-mode haskell-mode evil helpful smex gruber-darker-theme counsel ivy-rich which-key rainbow-delimiters doom-modeline gruvbox-theme ivy command-log-mode use-package))
  '(send-mail-function 'smtpmail-send-it)
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
@@ -220,6 +220,23 @@
   (eshell/addpath "/usr/local/share/dotnet")
   (eshell/addpath "/usr/local/bin"))
 (add-hook 'eshell-mode-hook #'jpk/eshell-mode-hook)
+
+(setq exec-path
+      (append
+	 '("/opt/bin"
+	  "~/.cabal/bin"
+	  "~/.local/bin"
+	  "~/.cargo/bin"
+	  "~/Library/Application Support/Code/User/globalStorage/haskell.haskell"
+	  "~/.ghcup/ghc/9.0.1/bin"
+	  "/Applications/Julia-1.5.app/Contents/Resources/julia/bin"
+	  "~/.cabal/bin"
+	  "~/.ghcup/bin"
+	  "/usr/local/sbin"
+	  "~/go/bin"
+	  "/usr/local/share/dotnet"
+	  "/usr/local/bin")
+	 exec-path))
 
 ;; SHIFT + Arrow keys to move between splits
 (windmove-default-keybindings)
