@@ -1,0 +1,52 @@
+# Alacritty Configuration File
+
+[window]
+# Set the background opacity (from 0.0 to 1.0, where 1.0 is opaque)
+opacity = 0.9
+
+# Window padding in pixels (scaled by DPI)
+padding = { x = 25, y = 25 }
+
+# Window decorations, can be "full", "none", "transparent", or "buttonless"
+decorations = "full"
+
+[shell]
+program = "/usr/local/bin/zsh"
+
+[font]
+size = 14.0
+
+normal = { family = "JetBrains Mono" }
+
+[colors]
+[colors.primary]
+background = "#1D1F21"
+foreground = "#C5C8C6"
+
+[colors.cursor]
+text = "CellBackground"
+cursor = "CellForeground"
+
+[colors.normal]
+black = "#1D1F21"
+red = "#CC6666"
+green = "#B5BD68"
+yellow = "#F0C674"
+blue = "#81A2BE"
+magenta = "#B294BB"
+cyan = "#8ABEB7"
+white = "#C5C8C6"
+
+[colors.bright]
+black = "#969896"
+red = "#FF3333"
+green = "#9EC400"
+yellow = "#F0C674"
+blue = "#81A2BE"
+magenta = "#B77EE0"
+cyan = "#8ABEB7"
+white = "#FFFFFF"
+
+[cursor]
+# Set the cursor to be thin
+style = "Beam"
